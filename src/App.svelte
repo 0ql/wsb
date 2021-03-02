@@ -8,7 +8,7 @@
 	<nav class="border-b bg-secondary w-12 h-screen fixed">
 		<div
 			on:click={() => window.open("https://www.reddit.com/r/wallstreetbets/")}
-			class="absolute cursor-pointer bottom-2 mb-10"
+			class="absolute cursor-pointer bottom-2 mb-14"
 			style="margin-left: 0.4rem"
 		>
 			<svg
