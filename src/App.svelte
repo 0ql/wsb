@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import Chart from "./components/Chart.svelte";
 	import Feed from "./components/Feed.svelte";
 </script>

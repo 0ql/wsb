@@ -100,7 +100,7 @@
 							<!-- Video -->
 							{(()=>{console.log("####",el.data.secure_media.reddit_video)})()}
 							<div>
-								<Video {el} />
+								<Video el={el.data.secure_media} />
 							</div>
 						{:else}
 							<!-- Image -->
