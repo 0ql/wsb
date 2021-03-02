@@ -127,7 +127,7 @@ const config: webpack.Configuration & WebpackDevServer.Configuration = {
 		hot: true,
 		stats: 'minimal',
 		contentBase: 'public',
-		watchContentBase: true,
+		watchContentBase: true
 	},
 	mode: (mode === 'production' ? 'production' : 'development'),
 	plugins: [
