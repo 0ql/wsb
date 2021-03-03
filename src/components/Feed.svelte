@@ -35,14 +35,13 @@
 
 	requestJson("hot");
 
-	const span = document.createElement('span');
-  const decodeHTMLEntities = (text) => {
-    return text
-    .replace(/&[#A-Za-z0-9]+;/gi, (entity,position,text)=> {
+	const span = document.createElement("span");
+	const decodeHTMLEntities = (text) => {
+		return text.replace(/&[#A-Za-z0-9]+;/gi, (entity, position, text) => {
 			span.innerHTML = entity;
 			return span.innerText;
-    });
-  }
+		});
+	};
 </script>
 
 <div
@@ -84,7 +83,13 @@
 					<div class="text-xs m-2">{parse(el.data.ups)}</div>
 				</div>
 				<div class="m-3">
-					<div class="text-xs flex">
+					<div
+						on:click={() =>
+							window.open(
+								"https://www.reddit.com/user/" + el.data.author + "/"
+							)}
+						class="text-xs flex cursor-pointer"
+					>
 						<div>{"u/" + el.data.author}</div>
 						<div class="ml-2">{toDateTime(el.data.created)}</div>
 					</div>
@@ -95,10 +100,12 @@
 							<div class="text-sm">
 								{@html (() => decodeHTMLEntities(el.data.selftext_html))()}
 							</div>
-						{:else if (el.data.secure_media // 👈 null and undefined check
-							&& Object.keys(el.data.secure_media).length !== 0 && el.data.secure_media.constructor === Object)}
+						{:else if el.data.secure_media && Object.keys(el.data.secure_media).length !== 0 && el.data.secure_media.constructor === Object}
+							// 👈 null and undefined check
 							<!-- Video -->
-							{(()=>{console.log("####",el.data.secure_media.reddit_video)})()}
+							{(() => {
+								console.log("####", el.data.secure_media.reddit_video);
+							})()}
 							<div>
 								<Video el={el.data.secure_media} />
 							</div>
