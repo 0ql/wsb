@@ -2,7 +2,7 @@
 	import Video from "./Video.svelte";
 
 	export let el;
-	let full = false
+	let full = false;
 
 	const span = document.createElement("span");
 	const decodeHTMLEntities = (text) => {
@@ -31,21 +31,29 @@
 	<div class="bg-3 rounded-l-lg">
 		<div class="text-xs w-8 text-center pt-2">{parse(el.data.ups)}</div>
 	</div>
-	<div class="m-3 overflow-hidden h-12"
-		class:full={full}
-		on:click={() => full = !full}
+	<div
+		class="m-3 overflow-hidden h-12"
+		class:full
+		on:click={() => (full = !full)}
 	>
-	<div class="text-xs flex">
-		<div>{"u/" + el.data.author}</div>
-		<div class="ml-2">{toDateTime(el.data.created)}</div>
-	</div>
-	<div class="mt-1 mb-3">{el.data.title}</div>
+		<div class="text-xs flex">
+			<div
+				class="cursor-pointer hover:underline"
+				on:click={() =>
+					window.open("https://www.reddit.com/user/" + el.data.author + "/")}
+			>
+				{"u/" + el.data.author}
+			</div>
+			<div class="ml-2">{toDateTime(el.data.created)}</div>
+		</div>
+		<div class="mt-1 mb-3">{el.data.title}</div>
 		{#if el.data.selftext !== ""}
 			<!-- Komment -->
 			<div class="text-sm">
 				{@html (() => decodeHTMLEntities(el.data.selftext_html))()}
 			</div>
-		{:else if el.data.secure_media && Object.keys(el.data.secure_media).length !== 0 && el.data.secure_media.constructor === Object} // 👈 null and undefined check
+		{:else if el.data.secure_media && Object.keys(el.data.secure_media).length !== 0 && el.data.secure_media.constructor === Object}
+			// 👈 null and undefined check
 			<!-- Video -->
 			{(() => {
 				console.log("####", el.data.secure_media.reddit_video);
@@ -61,7 +69,6 @@
 		{/if}
 	</div>
 </div>
-
 
 <style>
 	.full {
