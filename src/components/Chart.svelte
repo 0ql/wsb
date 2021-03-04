@@ -10,7 +10,7 @@
 	let chart,
 		chartEl,
 		input,
-		currentStock: string = "TSLA";
+		currentStock: string = "GME";
 	let loaded: boolean = false,
 		visibility: string = "block";
 
