@@ -88,7 +88,7 @@
 							window.open(
 								"https://www.reddit.com/user/" + el.data.author + "/"
 							)}
-						class="text-xs flex cursor-pointer"
+						class="text-xs flex cursor-pointer hover:underline"
 					>
 						<div>{"u/" + el.data.author}</div>
 						<div class="ml-2">{toDateTime(el.data.created)}</div>
