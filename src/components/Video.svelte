@@ -2,9 +2,10 @@
 	import { onMount } from "svelte";
 	export let el;
 
+	let video;
+
 	onMount(() => {
-		let video = document.getElementById("video");
-		let videoSrc = "https://v.redd.it/1fkc75aceck61/HLSPlaylist.m3u8";
+		let videoSrc = "https://v.redd.it/gt5kwat8srk61/HLSPlaylist.m3u8?a=1617371327%2CZTBjM2RlMDk4YjlmNjA1YzQxYmU3ZjZhOGEwOGRkZGI5MzAyODlmYzcxNTczNDExZmQzNTEwNzc0Yzc3NjA5MA%3D%3D&v=1&f=sd";
 
 		if (Hls.isSupported()) {
 			let hls = new Hls();
@@ -16,7 +17,7 @@
 	});
 </script>
 
-<video id="video" controls>
+<video bind:this={video} id="video" controls>
 	<track kind="captions" />
 </video>
 

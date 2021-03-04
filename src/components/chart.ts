@@ -187,7 +187,7 @@ export class mainChart {
 
 	fail() { //TODO: HIDE WHEN LOADING DATA
 		this.recent.pop() // remove Invalid Stock
-		this.drawStock("TSLA", "daily", false)
+		this.drawStock("GME", "daily", false)
 	}
 }
 
